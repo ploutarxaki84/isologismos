@@ -1,0 +1,1532 @@
+/* ===========================================
+   ΙΣΟΛΟΓΙΣΜΟΣ - COMPLETE CSS
+   =========================================== */
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050508;
+    color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Font classes */
+.orbitron {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.jetbrains {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== BACKGROUND ===== */
+.grid-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(157, 0, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 242, 255, 0.03) 0%, transparent 50%),
+        linear-gradient(rgba(157, 0, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(157, 0, 255, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+}
+
+/* ===== HEADER ===== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* ΚΕΝΤΡΑΡΙΣΜΟΣ ΤΙΤΛΟΥ */
+    z-index: 100;
+    background: rgba(5, 5, 12, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Τίτλος */
+.page-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    background: linear-gradient(to right, #00f2ff, #9d00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+    text-transform: uppercase;
+    text-align: center; /* ΚΕΝΤΡΑΡΙΣΜΟΣ */
+}
+
+/* ===== MAIN LAYOUT ===== */
+.main-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+    padding: 20px;
+    gap: 20px;
+    overflow: hidden;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    background: rgba(10, 10, 20, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* SIDEBAR BUTTONS CONTAINER */
+.sidebar-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    flex: 1;
+}
+
+/* SIDEBAR BUTTONS */
+.sidebar-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-btn i {
+    font-size: 16px;
+    width: 24px;
+    text-align: center;
+}
+
+.sidebar-btn span {
+    flex: 1;
+}
+
+/* SIDEBAR BUTTON HOVER EFFECTS */
+.sidebar-btn:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.analysis-btn {
+    border-left: 3px solid #00f2ff;
+    color: #00f2ff;
+}
+
+.analysis-btn:hover {
+    background: rgba(0, 242, 255, 0.1);
+    border-color: #00f2ff;
+    box-shadow: 0 5px 15px rgba(0, 242, 255, 0.3);
+}
+
+.new-transaction-btn {
+    border-left: 3px solid #9d00ff;
+    color: #9d00ff;
+}
+
+.new-transaction-btn:hover {
+    background: rgba(157, 0, 255, 0.1);
+    border-color: #9d00ff;
+    box-shadow: 0 5px 15px rgba(157, 0, 255, 0.3);
+}
+
+.import-btn, .export-btn {
+    border-left: 3px solid #ffffff;
+    color: #ffffff;
+}
+
+.import-btn:hover, .export-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.months-btn {
+    border-left: 3px solid #00f2ff;
+    color: #00f2ff;
+    margin-top: auto; /* Πιέζει το widget προς τα κάτω */
+}
+
+.months-btn:hover {
+    background: rgba(0, 242, 255, 0.1);
+    border-color: #00f2ff;
+    box-shadow: 0 5px 15px rgba(0, 242, 255, 0.3);
+}
+
+/* ===== SIDEBAR WIDGET ===== */
+.sidebar-widget {
+    background: rgba(10, 10, 20, 0.9);
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-widget:hover {
+    border-color: rgba(0, 242, 255, 0.6);
+    box-shadow: 0 5px 25px rgba(0, 242, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.widget-border-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.widget-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.widget-amount {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    letter-spacing: 0.5px;
+    text-align: center;
+    width: 100%;
+}
+
+/* CYBER AMOUNT STYLE */
+.cyber-amount {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #00f2ff;
+    text-shadow: 
+        0 0 8px rgba(0, 242, 255, 0.8),
+        0 0 15px rgba(0, 242, 255, 0.4);
+    letter-spacing: 1px;
+}
+
+/* Negative amount style */
+.cyber-amount.negative {
+    color: #9d00ff;
+    text-shadow: 
+        0 0 8px rgba(157, 0, 255, 0.8),
+        0 0 15px rgba(157, 0, 255, 0.4);
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* DASHBOARD CARDS */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.stat-card {
+    background: rgba(10, 10, 20, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+}
+
+/* Χρώματα καρτών */
+.cash-accent {
+    background: #9d00ff;
+}
+
+.cash-card .card-title {
+    color: #9d00ff;
+}
+
+.cash-card .card-value {
+    color: #9d00ff;
+}
+
+.salary-accent {
+    background: #00f2ff;
+}
+
+.salary-card .card-title {
+    color: #00f2ff;
+}
+
+.salary-card .card-value {
+    color: #00f2ff;
+}
+
+.card-accent-style {
+    background: #ffffff;
+}
+
+.card-card .card-title {
+    color: #ffffff;
+}
+
+.card-card .card-value {
+    color: #ffffff;
+}
+
+.card-content {
+    padding-left: 15px;
+}
+
+.card-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.card-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* TRANSACTIONS SECTION */
+.transactions-section {
+    background: rgba(10, 10, 20, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.transactions-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.transactions-header h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.transactions-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-left: 10px;
+}
+
+.transactions-table {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.transactions-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transactions-table th {
+    text-align: left;
+    padding: 12px 16px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.transactions-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ΗΜΕΡΟΜΗΝΙΕΣ ΜΕ ΛΕΥΚΟ ΧΡΩΜΑ */
+.transactions-table td:first-child {
+    color: #ffffff !important;
+}
+
+/* Χρώματα κατηγοριών */
+.category-cash {
+    color: #9d00ff;
+}
+
+.category-salary {
+    color: #00f2ff;
+}
+
+.category-card {
+    color: #ffffff;
+}
+
+/* ΚΟΥΜΠΙΑ ΕΝΕΡΓΕΙΩΝ */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.action-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.edit-btn {
+    background: rgba(0, 242, 255, 0.1);
+    color: #00f2ff;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+}
+
+.edit-btn:hover {
+    background: rgba(0, 242, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.delete-btn {
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+    border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+.delete-btn:hover {
+    background: rgba(255, 71, 87, 0.2);
+    transform: translateY(-2px);
+}
+
+.income-row td:nth-child(4) {
+    color: #00f2ff;
+}
+
+.expense-row td:nth-child(4) {
+    color: #9d00ff;
+}
+
+.transactions-table tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.transactions-table .empty-row td {
+    text-align: center;
+    padding: 40px;
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic;
+}
+
+/* ===== ANALYSIS PANEL - ΠΛΕΓΜΑ ΑΝΑΛΥΣΗΣ ===== */
+#analysis-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    width: 90%;
+    max-width: 1400px;
+    height: 85vh;
+    background: rgba(10, 10, 20, 0.95);
+    border: 2px solid rgba(0, 242, 255, 0.3);
+    border-radius: 12px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+#analysis-panel.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* ANALYSIS HEADER */
+.analysis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 40px;
+    border-bottom: 2px solid rgba(0, 242, 255, 0.3);
+    background: rgba(0, 242, 255, 0.05);
+}
+
+.analysis-title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#analysis-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    letter-spacing: 6px;
+    color: #00f2ff;
+    text-transform: uppercase;
+}
+
+#analysis-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: rgba(0, 242, 255, 0.7);
+    text-transform: uppercase;
+}
+
+.analysis-close-btn {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+.analysis-close-btn:hover {
+    background: rgba(255, 0, 0, 0.15);
+    border-color: #ff4757;
+    color: #ff4757;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 71, 87, 0.3);
+}
+
+/* ANALYSIS CONTENT */
+.analysis-content {
+    height: calc(100% - 90px);
+    overflow-y: auto;
+    padding: 30px;
+}
+
+/* ΠΛΕΓΜΑ ΑΝΑΛΥΣΗΣ EXCEL STYLE */
+.analysis-grid-excel {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: auto;
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+/* ΚΕΦΑΛΙΔΕΣ ΜΗΝΩΝ */
+.grid-header-month {
+    background: rgba(0, 242, 255, 0.1);
+    padding: 12px 8px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #00f2ff;
+    text-transform: uppercase;
+}
+
+/* ΚΕΦΑΛΙΔΕΣ ΚΑΤΗΓΟΡΙΩΝ */
+.grid-header-category {
+    background: rgba(157, 0, 255, 0.1);
+    padding: 12px 8px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #9d00ff;
+    text-transform: uppercase;
+}
+
+/* ΚΕΛΙΑ ΠΛΕΓΜΑΤΟΣ */
+.grid-cell-excel {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px 10px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-cell-excel:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ΜΠΙΛΙΑ ΣΤΑ ΚΕΛΙΑ */
+.cell-bullet-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.cell-bullet {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: relative;
+}
+
+/* ΧΡΩΜΑΤΑ ΜΠΙΛΙΩΝ ΒΑΣΕΙ ΚΑΤΗΓΟΡΙΑΣ */
+.bullet-cash {
+    background: #9d00ff;
+    box-shadow: 0 0 15px rgba(157, 0, 255, 0.7);
+}
+
+.bullet-salary {
+    background: #00f2ff;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.7);
+}
+
+.bullet-card {
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+.cell-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 5px;
+}
+
+.grid-placeholder {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.grid-placeholder i {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.grid-placeholder p {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+/* ΤΕΛΙΚΟ ΣΥΝΟΛΟ ΣΤΟ ANALYSIS */
+.analysis-total-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(0, 242, 255, 0.3);
+    text-align: center;
+}
+
+.analysis-total {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 15px;
+    background: rgba(0, 242, 255, 0.05);
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 242, 255, 0.2);
+}
+
+.total-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+}
+
+.total-amount {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #00f2ff;
+}
+
+/* CYBER AMOUNT HOLO */
+.cyber-amount-holo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: #00f2ff;
+    text-shadow: 
+        0 0 10px rgba(0, 242, 255, 0.8),
+        0 0 20px rgba(0, 242, 255, 0.6),
+        0 0 30px rgba(0, 242, 255, 0.4);
+    letter-spacing: 2px;
+}
+
+/* ===== MODALS ===== */
+/* MODAL ΝΕΑΣ/ΕΠΕΞΕΡΓΑΣΙΑΣ ΣΥΝΑΛΛΑΓΗΣ */
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: rgba(10, 10, 20, 0.9);
+    border: 2px solid rgba(0, 242, 255, 0.3);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 550px;
+    backdrop-filter: blur(30px);
+    box-shadow: 
+        0 25px 80px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(0, 242, 255, 0.15);
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 35px;
+    border-bottom: 2px solid rgba(0, 242, 255, 0.2);
+    background: linear-gradient(90deg, 
+        rgba(0, 242, 255, 0.1) 0%, 
+        rgba(157, 0, 255, 0.1) 100%);
+}
+
+.modal-header h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: #00f2ff;
+    text-transform: uppercase;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 35px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.modal-input,
+.modal-select {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(5, 5, 12, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.modal-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f2ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    padding-right: 45px;
+}
+
+.modal-input:focus,
+.modal-select:focus {
+    outline: none;
+    border-color: #00f2ff;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+    background: rgba(0, 242, 255, 0.05);
+}
+
+.modal-select option {
+    background: rgba(10, 10, 20, 0.95);
+    color: #ffffff;
+    padding: 10px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+    flex: 1;
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-transform: uppercase;
+    min-width: 120px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00f2ff, #9d00ff);
+    color: #050508;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 40px rgba(0, 242, 255, 0.4),
+        0 0 30px rgba(157, 0, 255, 0.3);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ff4757, #ff3838);
+    color: white;
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 71, 87, 0.4);
+}
+
+/* MODAL ΛΕΠΤΟΜΕΡΕΙΩΝ */
+.modal-overlay-details {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2001;
+}
+
+.modal-content-details {
+    background: rgba(10, 10, 20, 0.95);
+    border: 2px solid rgba(0, 242, 255, 0.3);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow: hidden;
+    box-shadow: 
+        0 25px 80px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(0, 242, 255, 0.2);
+}
+
+.modal-header-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 35px;
+    border-bottom: 2px solid rgba(0, 242, 255, 0.2);
+    background: rgba(0, 242, 255, 0.1);
+}
+
+.modal-header-details h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: #00f2ff;
+    text-transform: uppercase;
+}
+
+.modal-header-details > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-tool-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+#delete-transaction-btn {
+    background: rgba(255, 71, 87, 0.1);
+    border-color: rgba(255, 71, 87, 0.3);
+    color: #ff4757;
+}
+
+#delete-transaction-btn:hover {
+    background: rgba(255, 71, 87, 0.2);
+    border-color: #ff4757;
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+
+.modal-close-details {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 20px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.modal-close-details:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+.modal-body-details {
+    padding: 0;
+}
+
+.details-content {
+    padding: 30px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.details-table th {
+    text-align: left;
+    padding: 15px 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    color: #00f2ff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+    background: rgba(0, 242, 255, 0.05);
+}
+
+.details-table td {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ΗΜΕΡΟΜΗΝΙΕΣ ΜΕ ΛΕΥΚΟ ΧΡΩΜΑ */
+.details-table td:first-child {
+    color: #ffffff !important;
+}
+
+.details-table .income-row td:nth-child(4) {
+    color: #00f2ff;
+}
+
+.details-table .expense-row td:nth-child(4) {
+    color: #9d00ff;
+}
+
+/* MODAL ΜΗΝΑ */
+.modal-overlay-month {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2002;
+}
+
+.modal-content-month {
+    background: rgba(5, 10, 20, 0.95);
+    border: 2px solid rgba(0, 242, 255, 0.4);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow: hidden;
+    box-shadow: 
+        0 0 100px rgba(0, 242, 255, 0.3);
+    position: relative;
+}
+
+.modal-header-month {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 35px;
+    border-bottom: 2px solid rgba(0, 242, 255, 0.3);
+    background: rgba(0, 242, 255, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.modal-header-month h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    letter-spacing: 4px;
+    color: #00f2ff;
+    text-transform: uppercase;
+}
+
+.modal-header-month > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-close-month {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 20px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.modal-close-month:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+.modal-body-month {
+    padding: 0;
+}
+
+.month-content {
+    padding: 30px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.month-transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.month-transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border-left: 3px solid;
+    transition: all 0.3s ease;
+}
+
+.month-transaction-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateX(5px);
+}
+
+.month-transaction-income {
+    border-left-color: #00f2ff;
+}
+
+.month-transaction-expense {
+    border-left-color: #9d00ff;
+}
+
+.month-transaction-desc {
+    flex: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+}
+
+.month-transaction-category {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.category-cash-month {
+    color: #9d00ff;
+}
+
+.category-salary-month {
+    color: #00f2ff;
+}
+
+.category-card-month {
+    color: #ffffff;
+}
+
+.month-transaction-amount {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    margin-left: 20px;
+    min-width: 100px;
+    text-align: right;
+}
+
+.income-amount-month {
+    color: #00f2ff;
+}
+
+.expense-amount-month {
+    color: #9d00ff;
+}
+
+/* MODAL ΕΠΙΛΟΓΗΣ ΜΗΝΩΝ */
+.modal-overlay-months-selector {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(15px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2003;
+}
+
+.modal-content-months-selector {
+    background: rgba(10, 10, 20, 0.95);
+    border: 2px solid rgba(0, 242, 255, 0.3);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    backdrop-filter: blur(30px);
+    box-shadow: 
+        0 25px 80px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(0, 242, 255, 0.2);
+    overflow: hidden;
+}
+
+.modal-header-months-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 35px;
+    border-bottom: 2px solid rgba(0, 242, 255, 0.2);
+    background: rgba(0, 242, 255, 0.1);
+}
+
+.modal-header-months-selector h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: #00f2ff;
+    text-transform: uppercase;
+}
+
+.modal-close-months-selector {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.modal-close-months-selector:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+.modal-body-months-selector {
+    padding: 35px;
+}
+
+.months-selector-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.month-selector-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    border-left: 3px solid;
+}
+
+.month-selector-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.month-selector-name {
+    flex: 1;
+}
+
+.month-selector-total {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: bold;
+    min-width: 80px;
+    text-align: right;
+}
+
+.month-selector-placeholder {
+    text-align: center;
+    padding: 40px 20px;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow-y: auto;
+    }
+    
+    .sidebar {
+        height: auto;
+        max-height: 600px;
+        margin-bottom: 20px;
+    }
+    
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .analysis-grid-excel {
+        grid-template-columns: repeat(7, 1fr);
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        padding: 0 20px;
+        height: 70px;
+    }
+    
+    .page-title {
+        font-size: 18px;
+        letter-spacing: 4px;
+    }
+    
+    .main-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+        margin-top: 70px;
+        overflow-y: auto;
+        padding: 15px;
+    }
+    
+    .sidebar {
+        height: auto;
+        max-height: 500px;
+        margin-bottom: 0;
+    }
+    
+    .sidebar-widget {
+        margin-top: 15px;
+        padding: 12px;
+    }
+    
+    .widget-amount {
+        font-size: 18px;
+    }
+    
+    .cyber-amount {
+        font-size: 18px;
+    }
+    
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    #analysis-panel {
+        width: 95%;
+        height: 90vh;
+    }
+    
+    .analysis-grid-excel {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .btn-primary, .btn-secondary, .btn-danger {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        padding: 0 15px;
+    }
+    
+    .page-title {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+    
+    .main-layout {
+        padding: 10px;
+        margin-top: 65px;
+    }
+    
+    .sidebar, .dashboard {
+        padding: 15px;
+    }
+    
+    .sidebar-widget {
+        margin-top: 10px;
+        padding: 10px;
+    }
+    
+    .widget-amount {
+        font-size: 16px;
+    }
+    
+    .cyber-amount {
+        font-size: 16px;
+    }
+    
+    .modal-content,
+    .modal-content-details,
+    .modal-content-month,
+    .modal-content-months-selector {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .analysis-grid-excel {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .transactions-table th:nth-child(5),
+    .transactions-table td:nth-child(5) {
+        display: none;
+    }
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #00f2ff, #9d00ff);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00f2ff;
+}
