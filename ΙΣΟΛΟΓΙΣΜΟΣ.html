@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ΙΣΟΛΟΓΙΣΜΟΣ</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- GRID BACKGROUND -->
+    <div class="grid-bg"></div>
+    
+    <!-- HEADER -->
+    <header class="main-header">
+        <!-- ΚΕΝΤΡΙΚΟΣ ΤΙΤΛΟΣ -->
+        <h1 class="page-title">ΙΣΟΛΟΓΙΣΜΟΣ</h1>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <main class="main-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <!-- SIDEBAR BUTTONS -->
+            <div class="sidebar-buttons-container">
+                <!-- ΑΝΑΛΥΣΗ -->
+                <button class="sidebar-btn analysis-btn" id="sidebar-analysis-btn">
+                    <i class="fas fa-table"></i>
+                    <span>ΑΝΑΛΥΣΗ</span>
+                </button>
+                
+                <!-- ΝΕΑ ΣΥΝΑΛΛΑΓΗ -->
+                <button class="sidebar-btn new-transaction-btn" id="sidebar-new-transaction-btn">
+                    <i class="fas fa-plus"></i>
+                    <span>ΝΕΑ ΚΑΤΑΧΩΡΗΣΗ</span>
+                </button>
+                
+                <!-- ΕΙΣΑΓΩΓΗ -->
+                <button class="sidebar-btn import-btn" id="sidebar-import-btn">
+                    <i class="fas fa-upload"></i>
+                    <span>ΕΙΣΑΓΩΓΗ</span>
+                </button>
+                
+                <!-- ΕΞΑΓΩΓΗ -->
+                <button class="sidebar-btn export-btn" id="sidebar-export-btn">
+                    <i class="fas fa-download"></i>
+                    <span>ΕΞΑΓΩΓΗ</span>
+                </button>
+                
+                <!-- ΜΗΝΕΣ -->
+                <button class="sidebar-btn months-btn" id="sidebar-months-btn">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>ΜΗΝΕΣ</span>
+                </button>
+            </div>
+
+            <!-- SIDEBAR WIDGET - ΥΠΟΛΟΙΠΟ -->
+            <div class="sidebar-widget" id="sidebar-widget">
+                <div class="widget-border-animation"></div>
+                <div class="widget-content">
+                    <div class="widget-amount" id="total-amount">
+                        <span class="cyber-amount">0,00 €</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- DASHBOARD -->
+        <section class="dashboard">
+            <!-- DASHBOARD CARDS -->
+            <div class="dashboard-cards">
+                <!-- ΜΕΤΡΗΤΑ -->
+                <div class="stat-card cash-card">
+                    <div class="card-accent cash-accent"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">ΜΕΤΡΗΤΑ</h3>
+                        <p class="card-value" id="stat-cash">0.00 €</p>
+                    </div>
+                </div>
+
+                <!-- ΜΙΣΘΟΔΟΣΙΑ -->
+                <div class="stat-card salary-card">
+                    <div class="card-accent salary-accent"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">ΜΙΣΘΟΔΟΣΙΑ</h3>
+                        <p class="card-value" id="stat-salary">0.00 €</p>
+                    </div>
+                </div>
+
+                <!-- ΚΑΡΤΑ -->
+                <div class="stat-card card-card">
+                    <div class="card-accent card-accent-style"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">ΚΑΡΤΑ</h3>
+                        <p class="card-value" id="stat-card">0.00 €</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ΠΙΝΑΚΑΣ ΣΥΝΑΛΛΑΓΩΝ -->
+            <div class="transactions-section">
+                <div class="transactions-header">
+                    <h3>ΣΥΝΑΛΛΑΓΕΣ</h3>
+                    <span class="transactions-count">(10 τελευταίες)</span>
+                </div>
+                <div class="transactions-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ΗΜΕΡΟΜΗΝΙΑ</th>
+                                <th>ΠΕΡΙΓΡΑΦΗ</th>
+                                <th>ΚΑΤΗΓΟΡΙΑ</th>
+                                <th>ΠΟΣΟ</th>
+                                <th>ΕΝΕΡΓΕΙΕΣ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="last-transactions">
+                            <tr class="empty-row">
+                                <td colspan="5">Δεν υπάρχουν καταχωρήσεις</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ANALYSIS PANEL - ΠΛΕΓΜΑ ΑΝΑΛΥΣΗΣ -->
+    <div id="analysis-panel">
+        <div class="analysis-header">
+            <div class="analysis-title-container">
+                <h2 id="analysis-title">ΑΝΑΛΥΣΗ</h2>
+                <p id="analysis-subtitle">ΜΗΝΕΣ × ΚΑΤΗΓΟΡΙΕΣ</p>
+            </div>
+            <button class="analysis-close-btn" id="analysis-close-btn">
+                <i class="fas fa-times"></i>
+                ΚΛΕΙΣΙΜΟ
+            </button>
+        </div>
+
+        <div class="analysis-content">
+            <!-- ΠΛΕΓΜΑ ΑΝΑΛΥΣΗΣ -->
+            <div class="analysis-grid-excel" id="analysis-grid">
+                <!-- Θα γεμίσει με JavaScript -->
+                <div class="grid-placeholder">
+                    <i class="fas fa-table"></i>
+                    <p>ΔΕΝ ΥΠΑΡΧΟΥΝ ΚΑΤΑΧΩΡΗΣΕΙΣ</p>
+                </div>
+            </div>
+            
+            <!-- ΤΕΛΙΚΟ ΣΥΝΟΛΟ -->
+            <div class="analysis-total-container">
+                <div class="analysis-total" id="analysis-total">
+                    <span class="total-label">ΤΕΛΙΚΟ ΥΠΟΛΟΙΠΟ:</span>
+                    <span class="total-amount">0,00 €</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ΝΕΑΣ/ΕΠΕΞΕΡΓΑΣΙΑΣ ΣΥΝΑΛΛΑΓΗΣ -->
+    <div id="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">ΝΕΑ ΣΥΝΑΛΛΑΓΗ</h3>
+                <button class="modal-close" id="modal-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <input type="hidden" id="edit-id" value="">
+                
+                <div class="form-group">
+                    <label for="in-date">ΗΜΕΡΟΜΗΝΙΑ</label>
+                    <input type="date" id="in-date" class="modal-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="in-type">ΤΥΠΟΣ</label>
+                    <select id="in-type" class="modal-select">
+                        <option value="income">ΕΣΟΔΑ</option>
+                        <option value="expense">ΕΞΟΔΑ</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="in-cat">ΚΑΤΗΓΟΡΙΑ</label>
+                    <select id="in-cat" class="modal-select">
+                        <option value="cash">ΜΕΤΡΗΤΑ</option>
+                        <option value="salary">ΜΙΣΘΟΔΟΣΙΑ</option>
+                        <option value="card">ΚΑΡΤΑ</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="in-amount">ΠΟΣΟ (€)</label>
+                    <input type="number" id="in-amount" step="0.01" placeholder="0.00" class="modal-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="in-desc">ΠΕΡΙΓΡΑΦΗ</label>
+                    <input type="text" id="in-desc" placeholder="Περιγραφή συναλλαγής..." class="modal-input">
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn-primary" id="save-entry-btn">
+                        <i class="fas fa-save"></i>
+                        ΑΠΟΘΗΚΕΥΣΗ
+                    </button>
+                    <button class="btn-secondary" id="cancel-btn">
+                        ΑΚΥΡΩΣΗ
+                    </button>
+                    <button class="btn-danger" id="delete-entry-btn" style="display: none;">
+                        <i class="fas fa-trash"></i>
+                        ΔΙΑΓΡΑΦΗ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ΛΕΠΤΟΜΕΡΕΙΩΝ ΣΥΝΑΛΛΑΓΩΝ -->
+    <div id="details-modal-overlay" class="modal-overlay-details">
+        <div class="modal-content-details">
+            <div class="modal-header-details">
+                <h3 id="details-modal-title">ΛΕΠΤΟΜΕΡΕΙΕΣ ΣΥΝΑΛΛΑΓΩΝ</h3>
+                <div>
+                    <button class="header-tool-btn" id="delete-transaction-btn" title="Διαγραφή Όλων">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    <button class="modal-close-details" id="details-modal-close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body-details">
+                <div class="details-content" id="details-modal-content">
+                    <!-- Θα γεμίσει με JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ΜΗΝΑ -->
+    <div id="month-modal-overlay" class="modal-overlay-month">
+        <div class="modal-content-month">
+            <div class="modal-header-month">
+                <h3 id="month-modal-title">ΜΗΝΑΣ</h3>
+                <div>
+                    <button class="modal-close-month" id="month-modal-close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body-month">
+                <div class="month-content" id="month-modal-content">
+                    <!-- Θα γεμίσει με JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ΕΠΙΛΟΓΗΣ ΜΗΝΩΝ -->
+    <div id="months-selector-modal-overlay" class="modal-overlay-months-selector">
+        <div class="modal-content-months-selector">
+            <div class="modal-header-months-selector">
+                <h3 id="months-selector-title">ΕΠΙΛΟΓΗ ΜΗΝΑ</h3>
+                <button class="modal-close-months-selector" id="months-selector-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body-months-selector">
+                <div class="months-selector-content" id="months-selector-content">
+                    <!-- Θα γεμίσει με JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HIDDEN FILE INPUT -->
+    <input type="file" id="fileInput" accept=".json" style="display: none;">
+
+    <!-- Our JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
