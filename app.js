@@ -134,9 +134,10 @@ function calculateCategoryTotals() {
             else if (entry.category === 'salary') salary += amount;
             else if (entry.category === 'card') card += amount;
         } else {
+            // ΤΟΡΟΠΟΙΗΣΗ: επιτρέπεται τώρα έξοδο και για μισθοδοσία
             if (entry.category === 'cash') cash -= amount;
+            else if (entry.category === 'salary') salary -= amount;
             else if (entry.category === 'card') card -= amount;
-            // Σημείωση: μισθοδοσία δεν έχει έξοδα
         }
     });
     
@@ -572,10 +573,8 @@ function saveEntry() {
         return;
     }
     
-    if (entry.category === 'salary' && entry.type === 'expense') {
-        alert('Η κατηγορία "Μισθοδοσία" δεχόμενη μόνο εισοδήματα.');
-        return;
-    }
+    // ΤΟΡΟΠΟΠΟΙΗΣΗ: Αφαίρεση του ελέγχου για "salary" & "expense"
+    // Η μισθοδοσία μπορεί τώρα να έχει και έξοδα
     
     if (currentEditId) {
         const index = db.findIndex(e => e.id === currentEditId);
